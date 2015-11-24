@@ -4,9 +4,14 @@
  * EnterValuesController
  * @constructor
  */
-var EnterValuesController = function($scope, $http, $routeParams, $rootScope) {
+var EnterValuesController = function($scope, $http, $routeParams, $rootScope, localStorageService) {
 	$scope.poll = null;
 	$scope.loading = false;
+	$scope.totalQuantity = localStorageService.get("total");
+	$scope.inconsistenciesFound = localStorageService.get("inconsistencies");
+
+	if ($scope.totalQuantity == null) $scope.totalQuantity = 0;
+	if ($scope.inconsistenciesFound == null) $scope.inconsistenciesFound = 0;
 
 	analitics();
 
@@ -32,6 +37,12 @@ var EnterValuesController = function($scope, $http, $routeParams, $rootScope) {
 		var url = 'backendServices/insertEnteredPoll.php?polling_id=' + $scope.poll.id + "&votos_nulos=" + $scope.votos_nulos + "&votos_blancos=" + $scope.votos_blancos + "&votos_recurridos=" + $scope.votos_recurridos + "&votos_impugnados=" + $scope.votos_impugnados + "&votos_fpv=" + $scope.votos_fpv + "&votos_cambiemos=" + $scope.votos_cambiemos + "&total=" + $scope.total + "&comentarios=" + $scope.comentarios;
 		console.log(url);
 		$http.get(url).success(function(response){
+			$scope.totalQuantity += 1;
+			$scope.inconsistenciesFound += parseInt(response);
+
+			localStorageService.set("total", $scope.totalQuantity);
+			localStorageService.set("inconsistencies", $scope.inconsistenciesFound);
+
 			$scope.loading = true;
     	}).finally(function() {
 		    $scope.loading = false;

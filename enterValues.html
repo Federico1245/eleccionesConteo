@@ -8,6 +8,17 @@
         </div>
         <div class="col-md-6">
 
+			<div class="row" style="margin-bottom: 25px;">
+				<div class="col-md-6">
+					<b> Cantidad total completados </b>
+					{{totalQuantity}}
+				</div>
+				<div class="col-md-6">
+					<b> Inconsistencias encontradas </b>
+					{{inconsistenciesFound}}
+				</div>
+			</div>
+
 			<div class="form-group">
 				<label style="font-size: 20px;">Alianza Frente para la Victoria</label>
 				<input ng-model="votos_fpv" type="number" min="-1" class="form-control" value="0">
