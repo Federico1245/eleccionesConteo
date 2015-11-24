@@ -1,0 +1,59 @@
+<div class="container" style="min-height: 100%;height: 100%;">
+
+    <div class="row" style="min-height: 100%;height: 100%;">
+        <div class="col-md-6" style="min-height: 100%;height: 100%; padding-bottom:5%;" ng-show="poll != null">
+			<iframe id="caja_pdf" name="caja_pdf" src="{{poll.pdf}}" style="display:block; width:100%; height:100%;">
+			</iframe>
+
+        </div>
+        <div class="col-md-6">
+
+			<div class="form-group">
+				<label style="font-size: 20px;">Alianza Frente para la Victoria</label>
+				<input ng-model="votos_fpv" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label style="font-size: 20px;">Alianza Cambiemos</label>
+				<input ng-model="votos_cambiemos" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>Votos nulos</label>
+				<input ng-model="votos_nulos" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>Votos recurridos</label>
+				<input ng-model="votos_recurridos" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>Votos en blanco</label>
+				<input ng-model="votos_blancos" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>Votos de identidad impugnada</label>
+				<input ng-model="votos_impugnados" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>Total</label>
+				<input ng-model="total" type="number" min="-1" class="form-control" value="0">
+			</div>
+
+			<div class="form-group">
+				<label>¿Ves alguna irregularidad? (solo responder en caso afirmativo)</label>
+				<input ng-model="comentarios" type="text" class="form-control"maxlength="1000">
+			</div>
+
+			<button type="button" class="btn btn-primary" ng-click="next()" ng-class="{'disabled': loading}">Submit</button>
+
+			<h6 style="margin-top:50px;">
+			  	En caso de haber algún valor totalmente ilegible ingreselo como "-1"
+			</h6>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+
+	<dl class="dl-horizontal">
+		<dt>Mesas totales</dt>
+		<dd>{{total}}</dd>
+
+		<dt>Mesas ingresadas</dt>
+		<dd>{{entered}}</dd>
+
+		<dt>Mesas con diferencias</dt>
+		<dd>{{differences}}</dd>
+	</dl>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+      	<th>Distrito</th>
+      	<th>Seccion</th>
+        <th>Circuito</th>
+        <th>Mesa</th>
+        <th>FPV</th>
+        <th>Cambiemos</th>
+        <th style="width:30px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="poll in polls">
+        <td>{{poll.distrito_nombre}}</td>
+        <td>{{poll.seccion_nombre}}</td>
+        <td>{{poll.circuito}}</td>
+        <td>{{poll.mesa}}</td>
+        <td>{{poll.votos_fpv}}</td>
+        <td>{{poll.votos_cambiemos}}</td>
+        <td><a type="button" class="btn btn-default" href="{{poll.url}}" target="_blank">Ver</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
