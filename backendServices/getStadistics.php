@@ -13,7 +13,7 @@
 
 	$retval = [];
 
-	$polls_different = $conn->query("SELECT * FROM pollings p WHERE EXISTS (SELECT 'EXISTS' FROM poll_entered pe WHERE (p.votos_nulos != pe.votos_nulos OR p.votos_blancos != pe.votos_blancos OR p.votos_recurridos != pe.votos_recurridos OR p.votos_impugnados != pe.votos_impugnados OR p.votos_fpv != pe.votos_fpv OR p.votos_cambiemos != pe.votos_cambiemos) AND p.id = pe.polling_id) ORDER BY id DESC");
+	$polls_different = $conn->query("SELECT * FROM pollings p WHERE EXISTS (SELECT 'EXISTS' FROM poll_entered pe WHERE (p.votos_nulos != pe.votos_nulos OR p.votos_blancos != pe.votos_blancos OR p.votos_recurridos != pe.votos_recurridos OR p.votos_impugnados != pe.votos_impugnados OR p.votos_fpv != pe.votos_fpv OR p.votos_cambiemos != pe.votos_cambiemos OR (pe.votos_nulos + pe.votos_blancos + pe.votos_recurridos + pe.votos_impugnados + pe.votos_fpv + pe.votos_cambiemos != pe.total AND pe.total != 0) OR (pe.comentarios IS NOT NULL AND pe.comentarios != '')) AND p.id = pe.polling_id) ORDER BY id DESC");
 	$retval['differences'] = $polls_different->num_rows;
 	$retval['polls'] = getArrayFromResult($polls_different);
 	$polls_different->close();
