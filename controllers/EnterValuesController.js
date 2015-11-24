@@ -8,6 +8,8 @@ var EnterValuesController = function($scope, $http, $routeParams, $rootScope) {
 	$scope.poll = null;
 	$scope.loading = false;
 
+	analitics();
+
 	$scope.reloadPoll = function() {
 		$http.get('backendServices/getRandomPoll.php').success(function(response){
 			$scope.loading = true;
