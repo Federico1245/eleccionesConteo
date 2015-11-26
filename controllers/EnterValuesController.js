@@ -50,6 +50,9 @@ var EnterValuesController = function($scope, $http, $routeParams, $rootScope, lo
 	}
 
 	$scope.next = function() {
+		if ($scope.votos_nulos == 0 && $scope.votos_blancos == 0 && $scope.votos_recurridos == 0 && $scope.votos_impugnados == 0 && $scope.votos_fpv == 0 && $scope.votos_cambiemos == 0 && $scope.total == 0 && $scope.comentarios == "") 
+			return;
+		
 		$scope.submitValues();
 		$scope.reloadPoll();
 	}

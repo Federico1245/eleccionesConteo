@@ -16,10 +16,8 @@
       <tr>
       	<th>Distrito</th>
       	<th>Seccion</th>
-        <th>Circuito</th>
-        <th>Mesa</th>
-        <th>FPV</th>
-        <th>Cambiemos</th>
+        <th>Razon</th>
+        <th>¿OK?</th>
         <th style="width:30px;"></th>
       </tr>
     </thead>
@@ -27,10 +25,12 @@
       <tr ng-repeat="poll in polls">
         <td>{{poll.distrito_nombre}}</td>
         <td>{{poll.seccion_nombre}}</td>
-        <td>{{poll.circuito}}</td>
-        <td>{{poll.mesa}}</td>
-        <td>{{poll.votos_fpv}}</td>
-        <td>{{poll.votos_cambiemos}}</td>
+        <td>{{poll.razon}}</td>
+        <td>
+          <span style="font-weight: bold;" ng-class="{'positive_rating': poll.rating > 0, 'negative_rating': poll.rating < 0}" >{{poll.rating}}</span>
+          <button type="button" ng-click="rateAdd(poll.poll_entered_id)" style="width:35px; margin-left:10px;" class="btn btn-default">+</button>
+          <button type="button" ng-click="rateSubstract(poll.poll_entered_id)" style="width:35px;" class="btn btn-default">-</button>
+        </td>
         <td><a type="button" class="btn btn-default" href="{{poll.url}}" target="_blank">Ver</a></td>
       </tr>
     </tbody>
